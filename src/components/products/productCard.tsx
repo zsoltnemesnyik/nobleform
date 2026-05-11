@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Category, Product } from "@prisma/client";
 
-type ProductWithCategory = Product & { category: Category };
+export type ProductWithCategory = Product & { category: Category };
 
 export function ProductCard({ product }: { product: ProductWithCategory }) {
   return (

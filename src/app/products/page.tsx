@@ -1,5 +1,8 @@
 import { getProducts } from "@/lib/queries";
-import { ProductCard } from "@/components/products/productCard";
+import {
+  ProductCard,
+  ProductWithCategory,
+} from "@/components/products/productCard";
 
 export const metadata = {
   title: "Products — NobleForm",
@@ -25,7 +28,7 @@ export default async function PageProducts() {
       {/* Grid */}
       <section className="px-6 pb-24 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-          {products.map((product) => (
+          {products.map((product: ProductWithCategory) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
