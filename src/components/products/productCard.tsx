@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Category, Product } from "@prisma/client";
+import type {
+  ProductModel as Product,
+  CategoryModel as Category,
+} from "@/generated/prisma/models";
 
 export type ProductWithCategory = Product & { category: Category };
 
