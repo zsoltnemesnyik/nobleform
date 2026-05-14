@@ -5,10 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "gen:types": "npx supabase gen types typescript --local > src/models/database.types.ts",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint",
-    "postinstall": "prisma generate"
+    "lint": "eslint"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
