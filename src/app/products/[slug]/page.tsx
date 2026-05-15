@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { getProductBySlug } from "@/lib/queries";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import AddToCartButton from "@/components/products/AddToCartButton";
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -50,9 +51,14 @@ export default async function PageProductDetail({ params }: Props) {
                         </p>
                     </div>
 
-                    <Button className="rounded-full bg-black px-6 py-3 text-white transition hover:opacity-90">
-                        Add to Inquiry Cart
-                    </Button>
+                    <AddToCartButton
+                        product={{
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            imageUrl: product.imageUrl,
+                        }}
+                    />
                 </div>
             </div>
         </main>
