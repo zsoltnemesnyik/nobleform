@@ -1,16 +1,7 @@
-"use client";
-
 import Link from "next/link";
-
-import { useCart } from "@/context/cart-context";
+import CartCount from "@/components/CartCount";
 
 export default function Navbar() {
-  const { items, mounted } = useCart();
-
-  const totalItems = mounted
-    ? items.reduce((acc, item) => acc + item.quantity, 0)
-    : 0;
-
   return (
     <header className="border-b">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -25,7 +16,7 @@ export default function Navbar() {
           <Link href="/products">Products</Link>
 
           <Link href="/cart">
-            Cart ({totalItems})
+            Cart (<CartCount />)
           </Link>
         </nav>
       </div>
