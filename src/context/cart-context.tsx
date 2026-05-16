@@ -10,13 +10,15 @@ export function CartProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [items, setItems] = useState<CartItem[]>(() => {
-    if (typeof window === "undefined") return [];
+  const [items, setItems] = useState<CartItem[]>([]);
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
     const stored = localStorage.getItem("cart");
-
-    return stored ? JSON.parse(stored) : [];
-  });
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (stored) setItems(JSON.parse(stored));
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items));
@@ -43,7 +45,7 @@ export function CartProvider({
   }
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem }}>
+    <CartContext.Provider value={{ items, mounted, addItem, removeItem }}>
       {children}
     </CartContext.Provider>
   );

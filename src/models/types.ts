@@ -6,6 +6,7 @@ export type CartItem = Pick<Product, "id" | "name" | "price" | "imageUrl"> & {
 
 export type CartContextType = {
   items: CartItem[];
+  mounted: boolean;
   addItem: (item: Omit<CartItem, "quantity">) => void;
   removeItem: (id: string) => void;
 };

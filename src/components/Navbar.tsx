@@ -5,12 +5,11 @@ import Link from "next/link";
 import { useCart } from "@/context/cart-context";
 
 export default function Navbar() {
-  const { items } = useCart();
+  const { items, mounted } = useCart();
 
-  const totalItems = items.reduce(
-    (acc, item) => acc + item.quantity,
-    0
-  );
+  const totalItems = mounted
+    ? items.reduce((acc, item) => acc + item.quantity, 0)
+    : 0;
 
   return (
     <header className="border-b">
