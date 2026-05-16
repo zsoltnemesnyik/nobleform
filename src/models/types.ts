@@ -1,8 +1,6 @@
-export type CartItem = {
-  id: string;
-  name: string;
-  price: number;
-  imageUrl: string;
+import { Product } from "@/generated/prisma/client";
+
+export type CartItem = Pick<Product, "id" | "name" | "price" | "imageUrl"> & {
   quantity: number;
 };
 

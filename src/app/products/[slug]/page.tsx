@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { getProductBySlug } from "@/lib/queries";
 import { notFound } from "next/navigation";
 import Image from "next/image";

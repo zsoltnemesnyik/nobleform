@@ -2,14 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/cart-context";
+import type { CartItem } from "@/models/types";
 
 type Props = {
-  product: {
-    id: string;
-    name: string;
-    price: number;
-    imageUrl: string;
-  };
+  product: Omit<CartItem, "quantity">;
 };
 
 export default function AddToCartButton({ product }: Props) {
