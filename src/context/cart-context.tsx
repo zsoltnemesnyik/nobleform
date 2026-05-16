@@ -44,8 +44,12 @@ export function CartProvider({
     setItems((prev) => prev.filter((item) => item.id !== id));
   }
 
+  function clearCart() {
+    setItems([]);
+  }
+
   return (
-    <CartContext.Provider value={{ items, mounted, addItem, removeItem }}>
+    <CartContext.Provider value={{ items, mounted, addItem, removeItem, clearCart }}>
       {children}
     </CartContext.Provider>
   );

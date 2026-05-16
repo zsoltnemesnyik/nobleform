@@ -23,7 +23,7 @@ import {
 } from "@/lib/validations/inquiry";
 
 export default function InquiryForm() {
-  const { items } = useCart();
+  const { items, clearCart } = useCart();
 
   const form = useForm<InquirySchema>({
     resolver: zodResolver(inquirySchema),
@@ -49,9 +49,9 @@ export default function InquiryForm() {
     console.log(result);
 
     if (result.success) {
-      alert("Inquiry submitted!");
-
+      clearCart();
       form.reset();
+      alert("Inquiry submitted!");
     } else {
       alert(result.error);
     }

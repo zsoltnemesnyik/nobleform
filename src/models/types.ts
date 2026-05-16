@@ -9,4 +9,5 @@ export type CartContextType = {
   mounted: boolean;
   addItem: (item: Omit<CartItem, "quantity">) => void;
   removeItem: (id: string) => void;
+  clearCart: () => void;
 };
