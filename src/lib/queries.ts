@@ -21,3 +21,35 @@ export async function getFeaturedProducts() {
     include: { category: true },
   });
 }
+
+export async function getInquiries() {
+  return prisma.inquiry.findMany({
+    include: {
+      items: {
+        include: {
+          product: true,
+        },
+      },
+    },
+
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+}
+
+export async function getInquiryById(id: string) {
+  return prisma.inquiry.findUnique({
+    where: {
+      id,
+    },
+
+    include: {
+      items: {
+        include: {
+          product: true,
+        },
+      },
+    },
+  });
+}
