@@ -3,20 +3,7 @@
 import prisma from "@/lib/prisma";
 
 import { inquirySchema } from "@/lib/validations/inquiry";
-
-type InquiryPayload = {
-    customer: {
-        name: string;
-        email: string;
-        phone?: string;
-        message?: string;
-    };
-
-    items: {
-        id: string;
-        quantity: number;
-    }[];
-};
+import { InquiryPayload } from "@/models/types";
 
 export async function createInquiry(
     payload: InquiryPayload

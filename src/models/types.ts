@@ -11,3 +11,17 @@ export type CartContextType = {
   removeItem: (id: string) => void;
   clearCart: () => void;
 };
+
+export type InquiryPayload = {
+    customer: {
+        name: string;
+        email: string;
+        phone?: string;
+        message?: string;
+    };
+
+    items: {
+        id: string;
+        quantity: number;
+    }[];
+};
