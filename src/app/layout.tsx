@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/cart-context";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "@/components/ui/sonner";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
         <CartProvider>
           <Navbar />
           {children}
+          <Toaster />
         </CartProvider>
       </body>
     </html>

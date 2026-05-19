@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/field";
 
 import { useCart } from "@/context/cart-context";
-import { createInquiry } from "@/actions/create-inquiry";
+import { createInquiry } from "@/actions/inquiry/create";
 
 import {
   inquirySchema,
@@ -45,8 +45,6 @@ export default function InquiryForm() {
         quantity: item.quantity,
       })),
     });
-
-    console.log(result);
 
     if (result.success) {
       clearCart();
