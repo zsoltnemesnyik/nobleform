@@ -1,9 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { logout } from "@/lib/auth/auth";
-import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
+
+import { logout } from "@/lib/auth/auth";
+
+import { Button } from "@/components/ui/button";
+
+import { LogOut } from "lucide-react";
 import { toast } from "sonner";
 
 export default function LogoutButton() {

@@ -1,10 +1,11 @@
 import { createClient } from "@/utils/supabase/client";
 
+const supabase = createClient();
+
 export async function login(
   email: string,
   password: string
 ) {
-  const supabase = createClient();
 
   return supabase.auth.signInWithPassword({
     email,
@@ -13,7 +14,5 @@ export async function login(
 }
 
 export async function logout() {
-  const supabase = createClient();
-
   return supabase.auth.signOut();
 }
