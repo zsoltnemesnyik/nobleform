@@ -10,7 +10,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 
-export default async function AdminPage() {
+export default async function AdminInquiriesPage() {
     const inquiries = await getInquiries();
 
     return (

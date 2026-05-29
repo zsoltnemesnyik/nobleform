@@ -15,7 +15,7 @@ export default async function InquiryDetailPage({
     if (!inquiry) notFound();
 
     return (
-        <main className="max-w-3xl mx-auto px-6 py-12 space-y-8">
+        <main className="w-full max-w-3xl mx-auto px-6 py-12 space-y-8">
             <div className="flex items-start justify-between">
                 <div>
                     <h1 className="font-serif text-4xl text-[#2c2420]">
