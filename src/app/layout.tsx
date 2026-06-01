@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/cart-context";
-import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 
 const cormorant = Cormorant_Garamond({
@@ -32,7 +31,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <CartProvider>
-          <Navbar />
           {children}
           <Toaster />
         </CartProvider>

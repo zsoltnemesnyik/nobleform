@@ -1,17 +1,8 @@
 import Link from "next/link";
 
 import CartCount from "@/components/CartCount";
-import LogoutButton from "@/components/admin/LogoutButton";
 
-import { createClient } from "@/utils/supabase/server";
-
-export default async function Navbar() {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
+export default async function NavbarPublic() {
   return (
     <header className="border-b">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -30,8 +21,6 @@ export default async function Navbar() {
           <Link href="/cart">
             Cart (<CartCount />)
           </Link>
-
-          {user && <LogoutButton />}
         </nav>
       </div>
     </header>
