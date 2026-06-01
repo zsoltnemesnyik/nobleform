@@ -1,7 +1,8 @@
 // src/app/api/inquiries/[id]/status/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import { updateInquiryStatus } from "@/lib/queries";
 import { createClient } from "@/utils/supabase/server";
+import { INQUIRY_STATUSES } from "@/lib/constants";
 
 export async function PATCH(
   request: NextRequest,
@@ -18,32 +19,25 @@ export async function PATCH(
     }
 
     const supabase = await createClient();
-
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
+    const { data: { session } } = await supabase.auth.getSession();
+    
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { status } = await request.json();
 
-    if (!["NEW", "REPLIED", "CLOSED"].includes(status)) {
+    if (!INQUIRY_STATUSES.includes(status)) {
       return NextResponse.json({ error: "Invalid status" }, { status: 400 });
     }
 
-    const updatedInquiry = await prisma.inquiry.update({
-      where: { id },
-      data: {
-        status,
-        updatedAt: new Date(),
-      },
+    await updateInquiryStatus(id, status);
+
+    return NextResponse.json({ 
+      success: true, 
+      status 
     });
 
-    return NextResponse.json({
-      success: true,
-      status: updatedInquiry.status,
-    });
   } catch (error) {
     console.error("Update status error:", error);
     

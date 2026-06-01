@@ -3,15 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-
-const STATUSES = ["NEW", "REPLIED", "CLOSED"] as const;
+import { INQUIRY_STATUSES, InquiryStatus } from "@/lib/constants";
 
 export default function UpdateStatusForm({
     id,
     currentStatus,
 }: {
     id: string;
-    currentStatus: string;
+    currentStatus: InquiryStatus;
 }) {
     const [status, setStatus] = useState(currentStatus);
     const [saving, setSaving] = useState(false);
@@ -55,7 +54,7 @@ export default function UpdateStatusForm({
             </p>
 
             <div className="flex gap-2">
-                {STATUSES.map((s) => (
+                {INQUIRY_STATUSES.map((s) => (
                     <button
                         key={s}
                         onClick={() => setStatus(s)}

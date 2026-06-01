@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { InquiryStatus } from "@/lib/constants";
 
 export async function getProducts() {
   return prisma.product.findMany({
@@ -50,6 +51,16 @@ export async function getInquiryById(id: string) {
           product: true,
         },
       },
+    },
+  });
+}
+
+export async function updateInquiryStatus(id: string, status: InquiryStatus) {
+  return prisma.inquiry.update({
+    where: { id },
+    data: {
+      status,
+      updatedAt: new Date(),
     },
   });
 }
